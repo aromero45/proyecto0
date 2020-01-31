@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<title>Eventos</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{% static "/css/main.css"%}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="{% static "js/constants.js"%}"></script>
+
+
+</head>
+
+<body>
+
+<h1 style="text-align : center;">Gestion de Eventos</h1>
+
+    <h2>Detalles Evento </h2>
+      <table>
+          <thead>
+            <tr>
+                <th scope="col">Nombre de evento</th>
+                <th scope="col">Fecha de inicio evento</th>
+                <th scope="col">Fecha final evento</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Modalidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td > {{ evento.name }} </td>
+                <td > {{ evento.start_date }} </td>
+                <td > {{ evento.finish_date }} </td>
+                <td > {{ evento.place }} </td>
+                <td > {{ evento.address }} </td>
+                <td > {{ evento.type.name }} </td>
+            </tr>
+          </tbody>
+
+      </table>
+      <br><br><br>
+      <a href="/index/"> Volver  </a><br><br>
+
+</body>
+
+</html>

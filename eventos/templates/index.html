@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<title>Eventos</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{% static "/css/main.css"%}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="{% static "js/constants.js"%}"></script>
+    <script src="{% static "js/index.js"%}"></script>
+
+
+</head>
+
+<body>
+
+<h1 style="text-align : center;">Gestion de Eventos</h1>
+  {% if sesion %}
+    <h2 style="text-align : center;">Bienvenido {{event.person.email}}</h2> <h4 style="text-align: Right"><a href="" id="logoutLink">Cerrar Sesion</a> </h4>
+
+    <h3>Eventos </h3>
+      <table>
+          <thead>
+            <tr>
+                <th scope="col">Nombre de evento</th>
+                <th scope="col">Fecha de inicio evento</th>
+                <th scope="col">Fecha final evento</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for evento in events.all %}
+            <tr>
+                <td > {{ evento.name }} </td>
+                <td > {{ evento.start_date }} </td>
+                <td > {{ evento.finish_date }} </td>
+                <td > {{ evento.creation_date }} </td>
+                <td > <a href="/update/{{evento.id}}"><i class="far fa-edit"></i></a> </td>
+                <td > <a href="/details/{{evento.id}}"><i class="fas fa-info-circle"></i></a> </td>
+                <td > <div class="delete" todelete="{{evento.id}}"><i class="fas fa-trash-alt"></i></div></td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+
+      </table>
+      <br><br><br>
+      <a href="/create/" style="font-size: 30px; text-decoration: none">Crear Evento  <i class="fas fa-calendar-plus"></i></a>
+  {% else %}
+    <h2 style="text-align : center;">Sesion no iniciada</h2>
+
+    <h3 style="text-align : center;"> Inicio de sesion</h3>
+
+    <form action="" style="text-align : center;" id="login">
+        email:<br>
+        <input type="text" name="email" id="email">
+        <br>
+        password:<br>
+        <input type="password" name="password" id="password">
+        <br><br>
+        <input type="submit" value="Enviar"><br><br>
+        <a href="/register/"> Registrarse  </a><br><br>
+        <a href="//">  Olvido su contrasena?</a><br><br>
+
+    </form>
+
+  {% endif %}
+
+</body>
+
+</html>

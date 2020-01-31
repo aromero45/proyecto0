@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<title>Eventos</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{% static "/css/main.css"%}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="{% static "js/constants.js"%}"></script>
+    <script src="{% static "js/modify.js"%}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'YYYY-MM-DD HH:MM'
+
+            });
+            $('#datetimepicker2').datetimepicker({
+                format: 'YYYY-MM-DD HH:MM'
+
+            });
+        });
+    </script>
+    <style type="text/css">
+            .table-condensed
+            {
+                width: 200px;
+                height: 10px;
+                font-size: 10px;
+            }
+    </style>
+
+</head>
+
+<body>
+
+<h1 style="text-align : center;">Gestion de Eventos</h1>
+
+    <h2 style="text-align : center;">Modificar Evento</h2>
+
+    <h3 style="text-align : center;">Eventos </h3>
+
+      <form action="" style="text-align : center;" id="modifyEventForm">
+        nombre:<input type="text" name="name" id="name" value="{{event.name}}">
+        <br><br>
+        categoria:
+        <select id="category">
+          {% for cat in categories %}
+            <option value="{{cat.id}}" {% if cat.id == event.category.id %} selected {% endif %}>{{cat.name}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+        lugar:<input type="text" name="place" id="place" value="{{event.place}}">
+        <br><br>
+        direccion:<input type="text" name="address" id="address" value={{event.address}}>
+        <br><br>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            Fecha Inicio:<div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" value="{{event.start_date}}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        <br><br>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            Fecha Final:<div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" value="{{ event.finish_date }}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        <br><br>
+        Modalidad:
+        <select id="eventType" value={{event.type.id}}>
+          {% for t in types %}
+            <option value="{{t.id}}" {% if t.id == event.type.id %} selected {% endif %}>{{t.name}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+        <br><br>
+        <input type="submit" value="Enviar"><br><br>
+       </form>
+
+</body>
+
+</html>

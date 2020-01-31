@@ -1,0 +1,50 @@
+body{
+    background-color: #c7d4e8;
+
+}
+
+.title{
+    color: #ff0000;
+}
+
+#tituloPrincipal{
+    color: #000000;
+    font-size: 30px;
+    font-family: fantasy;
+    padding: 26px 15px;
+    cursor: default;
+    font-weight: 200;
+    border-color: firebrick;
+    border-width: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid #5b6472;
+  padding: 10px 15px;
+}
+
+.bootstrap-datetimepicker-widget.pull-right:after {
+    left: auto;
+    right: 50%;
+}
+
+.bootstrap-datetimepicker-widget.pull-right:before {
+    left: auto;
+    right: 50%;
+}
+
+.a{
+    font-size: 25px
+}
+
+.form{
+    text-align: center
+}
+
+.container{
+    margin: 0 800px;
+}
